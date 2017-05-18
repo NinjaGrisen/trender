@@ -1,0 +1,8 @@
+@mixin caption($background: white) {    
+    padding: $spaceQuarter $spaceHalf;
+    margin-bottom: calc(#{$spaceQuarter}/2);
+    border-radius: 15px;
+    background: $background;
+    color: white;
+    font-weight: bold;
+}

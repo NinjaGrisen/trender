@@ -1,0 +1,39 @@
+.search {
+    &-background {
+        background: $blue;
+    }
+
+    &-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 40px;
+        max-width: calc(1300px - #{$spaceDefault});
+        margin: 0 auto $spaceDefault auto;        
+        padding: $spaceHalf;
+
+        select {
+            border: 2px solid white;
+            margin-right: $spaceHalf;
+            padding: 0 $spaceHalf;
+            color: white;
+            font-size: .9rem;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+            background-image:
+            linear-gradient(
+            $blue, #577990
+            );
+        }
+
+        button {
+            background: $red;
+            margin-top: 2px;
+            padding: 0 $spaceHalf;
+            color: white;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    }
+}

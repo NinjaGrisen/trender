@@ -1,0 +1,12 @@
+@mixin cottage-boarder($height: 80%, $width: 1px, $top: 10%, $right: $spaceHalf) {
+  position: relative;
+    &:after {
+        position: absolute;
+        content: '';
+        width: $width;
+        height: $height;
+        top: $top;
+        background: $borderGray;
+        right: $right;
+    }
+}
