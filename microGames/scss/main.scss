@@ -1,0 +1,361 @@
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400|Raleway:300,400,600,900');
+
+$color-white: #f0f1f6;
+$color-purple: #533c8a;
+$color-blackish: #1a1b20;
+$color-lightblackish: #2d2f3b;
+$color-complimentery: #23221d;
+
+$color-main: $color-white;
+$color-active: $color-purple;
+
+$space-default: 12px;
+$space-half: floor($space-default/2);
+$space-double: floor($space-default*2);
+
+//@import "modules/main";
+@mixin optionDesign() {
+    position: relative;
+    background: $color-main;
+    color: $color-complimentery;
+    height: 100px;
+    width: 100%;
+    padding: 0px 12px;
+    box-shadow: 8px 13px 15px rgba(0,0,0,.2);
+    transition: all .5s ease;
+    cursor: pointer;
+  
+  &:after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: -2.2px;
+      width: calc(100% - 1.5px); 
+      height: 7px;
+      background: darken($color-main, 10);
+      transform: skew(-50deg);
+      transition: all .5s ease;
+    }
+    
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: auto;
+      right: auto;
+      left: -6px;
+      top: 2.5px;
+      height: calc(100% - 0px);
+      width: 7px;
+      background: lighten($color-main, 12);
+      transform: skew(0, -40deg);
+      z-index: 2;
+      transition: all .5s ease;
+    } 
+}
+
+*,*:before,*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: radial-gradient(circle farthest-corner at -10% -10%, 
+                    lighten($color-main, 3) 3%, 
+                    darken($color-main, 2) 65%);
+  font-size: 62.5%;
+  font-family: 'Raleway', sans-serif;
+  
+}
+
+h1 {
+  position: relative;
+  font-size: 10rem;
+  color: darken($color-main, 2);
+  line-height: 70vh;
+  text-shadow: 4px 3px 2px darken($color-main, 25),
+               -1px -1px 1px lighten($color-main, 2);
+}
+
+.grid {
+  position: relative;
+  justify-items: center; 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+
+.skew {
+  position: absolute;
+  left: 73px;
+  top: 50%;
+  width: 200px;
+  transform: skew(3deg, 0deg)
+             translateY(-65%);
+  
+  &-container {
+    position: relative;
+    width: 50%;
+    height: 98vh;
+  }
+
+  .option {
+    @include optionDesign();
+    
+      margin-bottom: -31px;
+    
+    p {
+      padding-top: $space-default;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    
+    &__active,
+    &:hover {
+      @include optionDesign();
+      transform: scale(1.1);
+      background: $color-active;
+      color: white;
+      margin-bottom: -10px;
+      z-index: 30;
+     
+      &:after {
+        background: darken($color-active, 9);
+        z-index: 31;
+      }
+      &:before {
+        background: lighten($color-active, 3);
+        z-index: 32;
+      }
+    }
+  }
+}
+
+
+.option__active + div {
+  background: red;
+}
+
+.particles-js-canvas-el{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#particles-js {
+  height: 100vh;
+}
+
+
+/////////////////////////////////////////////////////
+
+.score-view {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-areas: "main score"
+                       "nav  nav";
+  grid-template-rows: 80vh 20vh;
+  grid-template-columns: calc(100% - 216px);
+}
+
+.score-area {
+    justify-self: end;
+    width: 200px;
+    max-width: 200px;
+    margin-right: 12px;
+}
+
+nav {
+  grid-area: nav;
+}
+
+main{
+  grid-area: main;  
+}
+
+footer {
+  grid-area: foot;
+}
+
+aside {
+    grid-area: score;
+}
+
+////////////////////////////////////
+
+
+.player {
+  &-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &--top {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: calc(100% - #{$space-half});
+    margin: $space-default 0 $space-half;
+    background: darken($color-main, 3);
+    border: 1px solid darken($color-main, 10);
+    background: url(../images/banana.png);
+    background-size: cover; 
+  }
+
+  &--the-rest {
+    @extend .player--top;
+    margin: auto;
+    width: calc(50% - calc(#{$space-half} / 2));
+    padding-bottom: calc(50% - #{$space-half});
+
+    &:before,
+    &::after {
+      display: none;
+    }
+   
+
+    &:nth-child(even) {
+      margin: 0 calc(#{$space-half} / 2) $space-half 0;
+    }
+    &:nth-child(odd) {
+      margin: 0 0 $space-half calc(#{$space-half} / 2);
+    }
+  }
+
+  &__name {
+    position: absolute;
+    margin: $space-half;
+    padding-right: 12px;
+    left: 0;
+    bottom: 0;
+    height: 30px;
+    width: calc(100% - #{$space-default});
+    background: rgba(255,255,255, .8);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    text-align: right;
+    line-height: 30px;
+    font-weight: 600;
+  }
+}
+
+svg {
+  position: absolute;
+  left: -9px;
+  top: -12px;
+  width: 18px;
+  fill: gold;
+  transform: rotate(-33deg);
+}
+
+///////////////////////////
+.result-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-player {
+  height: 60px;
+  background: darken($color-main, 3);
+  border: 1px solid darken($color-main, 10);
+  margin: 12px 12px 0 12px;
+
+  &__name {
+    display: inline-block;
+    margin-left: 12px;
+    font-weight: 900;
+    font-size: 2rem;
+    line-height: 57px;
+  }
+
+  &__score {
+    position: relative;
+    display: inline-block;
+    margin-left: 30px;
+    font-size: 1.5rem;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: -21px;
+      top: 22px;
+      height: 2px;
+      width: 2px;
+      background: gray;
+      border-radius: 50%;
+      box-shadow: 6px 0 0 grey, 12px 0 0 grey, -6px 0 0 grey;
+      
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .transform {
+//   width: 450px;
+//   margin: 12px auto;
+//   transform-origin:50% 100%;
+//   transform:perspective(300px) rotateX(10deg);
+
+//   .option {
+//     @include optionDesign();
+//     margin-bottom: 20px;
+//     &:after {
+//       bottom: -20px;
+//       left: 0;
+//       height: 0px;
+//       width: calc(100% - 20px);
+//       background: none;
+//       transform: none;
+//       border-left: 10px solid transparent;
+//       border-right: 10px solid transparent;
+//       border-top: 20px solid rgba(0,0,0,.2);
+//     }
+    
+//     &:before {
+//       display: none;
+//     }
+    
+//     &__active {
+//       @include optionDesign();
+//       background: red;
+//       margin-bottom: 20px;
+      
+//         &:after {
+//         bottom: -20px;
+//         left: 0;
+//         height: 0px;
+//         width: calc(100% - 20px);
+//         background: none;
+//         transform: none;
+//         border-left: 10px solid transparent;
+//         border-right: 10px solid transparent;
+//         border-top: 20px solid darken(red, 20);
+//       }
+
+//       &:before {
+//         display: none;
+//       }
+//     }
+//   }
+// }

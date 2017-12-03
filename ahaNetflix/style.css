@@ -1,0 +1,70 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .wrapper {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 30px;
+  }
+  
+  .game-container {
+    display: flex;
+    width: 100%;
+  }
+
+  .game-container.test {
+    transition: all .25s ease;
+  }
+  
+  .game {
+    width: calc(16% - 24px);
+    height: 30vh;
+    margin: 0 12px;
+    margin-left: 12px;
+    padding: 12px;
+    flex-shrink: 0;
+    background: tomato;
+    overflow: hidden;
+    transition: .15s ease all;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 830px) {
+    .game {
+      width: calc(24% - 24px);
+    }
+  }
+  .game__active:hover {
+    border: 1px solid red;
+    cursor: initial;
+  }
+  .game__stopHover {
+    pointer-events: none;
+    background: red;
+  }
+  .game__move {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: black;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    z-index: 2;
+  }
+  .game__move--right {
+    left: auto;
+    right: 0;
+  }
+  

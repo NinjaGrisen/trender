@@ -1,0 +1,30 @@
+*,*:after,*:before {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+body {
+    font-size: 62.5%;
+    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Lato', sans-serif;
+    background: $purple;
+    background-image: radial-gradient(circle farthest-corner at 50% 150%, rgba(255, 255, 255, .2) 3%, rgba(47, 35, 101, .8) 65%),
+                      url(https://static.pexels.com/photos/165818/pexels-photo-165818.jpeg);
+    background-size: cover;
+}
+
+a {
+    cursor: pointer;
+}
+
+h1 {
+    padding-left: 60px;
+    margin-top: 30px;
+    color: lighten($purple, 2);
+    font-size: 6rem;
+    font-weight: 900;
+    font-family: 'Raleway', sans-serif;
+    text-shadow: 3px -3px 13px rgba(0, 0, 0, 0.5), 
+                 -1px 1px lighten($purple, 15);
+}

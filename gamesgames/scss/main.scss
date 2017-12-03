@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,900');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400|Raleway:900');
+
+$purple: #2f2365;
+$complimentery: lighten(#2f2365, 8);
+$orange: #f78b1c;
+$yellow: #f5e363;
+$light-blue: #7259e4;
+$pink: #f94db4;
+
+
+$space-default: 24px;
+$space-double: floor($space-default * 2);
+$space-half: floor($space-default/2);
+$space-quarter: floor($space-half/2);
+
+@import "modules/main";
+@import "modules/flex";
+@import "modules/game-option";
+@import "modules/splash-page";
